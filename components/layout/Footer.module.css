@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 26px clamp(22px, 5vw, 70px);
+
+  background: #1e1e1e;
+  color: rgba(255,255,255,.45);
+
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+@media (max-width:700px){
+  .footer{
+    flex-direction:column;
+    gap:12px;
+  }
+}

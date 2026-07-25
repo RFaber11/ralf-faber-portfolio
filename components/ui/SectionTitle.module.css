@@ -1,0 +1,39 @@
+.header {
+  max-width: 880px;
+  margin-bottom: clamp(64px, 8vw, 112px);
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 7vw, 7.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  max-width: 570px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin-bottom: 56px;
+  }
+
+  .subtitle {
+    margin-top: 22px;
+  }
+}

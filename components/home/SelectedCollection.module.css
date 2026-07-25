@@ -1,0 +1,26 @@
+.collection {
+  background: var(--background);
+  padding-top: clamp(28px, 3.5vw, 50px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  row-gap: clamp(130px, 16vw, 240px);
+}
+
+/* Reveal maakt een div rondom iedere CollectionCard */
+.grid > div {
+  grid-column: 3 / span 8;
+  min-width: 0;
+}
+
+.grid > div:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    row-gap: 110px;
+  }
+}
