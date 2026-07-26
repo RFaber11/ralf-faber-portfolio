@@ -17,7 +17,7 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ralf-faber.vercel.app"),
+  metadataBase: new URL("https://www.ralffaber.com"),
 
   title: {
     default: "Ralf Faber | Portrait & Fashion Photographer",
