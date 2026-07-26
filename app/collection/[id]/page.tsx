@@ -1,12 +1,13 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import Navbar from "@/components/layout/Navbar";
-import { collections } from "@/lib/portfolio";
-import styles from "./CollectionPage.module.css";
-import Footer from "@/components/layout/Footer";
-import type { Metadata } from "next";
-import CollectionGallery from "@/components/gallery/CollectionGallery";
 import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import CollectionGallery from "@/components/gallery/CollectionGallery";
+import Footer from "@/components/layout/Footer";
+import { collections } from "@/lib/portfolio";
+
+import styles from "./CollectionPage.module.css";
 
 type CollectionPageProps = {
   params: Promise<{
@@ -53,60 +54,51 @@ export default async function CollectionPage({
 
   return (
     <>
-      <Navbar />
-
       <main className={styles.page}>
-        <div className={styles.collectionNavigation}>
-  <Link href="/#work" className={styles.backLink}>
-    <span aria-hidden="true">←</span>
-    <span>Back to work</span>
-  </Link>
+        <CollectionGallery
+          images={collection.images}
+          collectionTitle={collection.title}
+          collectionSubtitle={collection.subtitle}
+        />
 
-  <p>
-    {String(currentIndex + 1).padStart(2, "0")} /{" "}
-    {String(collections.length).padStart(2, "0")}
-  </p>
-</div>
+        <section className={styles.nextCollection}>
+          <p className={styles.nextEyebrow}>
+            Next collection
+          </p>
 
-  <CollectionGallery
-  images={collection.images}
-  collectionTitle={collection.title}
-  collectionSubtitle={collection.subtitle}
-/>
+          <Link
+            href={`/collection/${nextCollection.id}`}
+            className={styles.nextLink}
+            data-cursor="Open"
+          >
+            <div className={styles.nextImageWrap}>
+              <Image
+                src={nextCollection.cover}
+                alt={nextCollection.title}
+                fill
+                sizes="(max-width: 700px) 100vw, 90vw"
+                className={styles.nextImage}
+              />
 
-  <section className={styles.nextCollection}>
-  <p className={styles.nextEyebrow}>Next collection</p>
+              <div className={styles.nextOverlay} />
 
-  <Link
-    href={`/collection/${nextCollection.id}`}
-    className={styles.nextLink}
-    data-cursor="Open"
-  >
-    <div className={styles.nextImageWrap}>
-      <Image
-        src={nextCollection.cover}
-        alt={nextCollection.title}
-        fill
-        sizes="(max-width: 700px) 100vw, 90vw"
-        className={styles.nextImage}
-      />
+              <div className={styles.nextContent}>
+                <div>
+                  <h2>{nextCollection.title}</h2>
+                  <p>{nextCollection.subtitle}</p>
+                </div>
 
-      <div className={styles.nextOverlay} />
-
-      <div className={styles.nextContent}>
-        <div>
-          <h2>{nextCollection.title}</h2>
-          <p>{nextCollection.subtitle}</p>
-        </div>
-
-        <span className={styles.nextArrow} aria-hidden="true">
-          →
-        </span>
-      </div>
-    </div>
-  </Link>
-</section>
-</main>
+                <span
+                  className={styles.nextArrow}
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </div>
+            </div>
+          </Link>
+        </section>
+      </main>
 
       <Footer />
     </>

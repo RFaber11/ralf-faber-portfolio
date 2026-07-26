@@ -3,9 +3,9 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Ralf Faber",
-    url: "https://www.ralffaber.com",
+    url: "https://ralf-faber.vercel.app",
     jobTitle: "Portrait and Fashion Photographer",
-    image: "https://www.ralffaber.com/opengraph-image.jpg",
+    image: "https://ralf-faber.vercel.app/opengraph-image.jpg",
     sameAs: [
       "https://www.instagram.com/ralf.fabermedia",
     ],

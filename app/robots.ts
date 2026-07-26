@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
 
-    sitemap: "https://www.ralffaber.com/sitemap.xml",
+    sitemap: "https://ralf-faber.vercel.app/sitemap.xml",
   };
 }
