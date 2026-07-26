@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,6 +8,10 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
+  const useScrolledStyle = isScrolled || !isHomepage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +29,32 @@ export default function Navbar() {
     };
   }, []);
 
+  const handleLogoClick = (
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    if (!isHomepage) {
+      return;
+    }
+
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <header
       className={`${styles.navbar} ${
-        isScrolled ? styles.scrolled : ""
+        useScrolledStyle ? styles.scrolled : ""
       }`}
     >
       <Link
         href="/"
         className={styles.brand}
         aria-label="Ralf Faber homepage"
+        onClick={handleLogoClick}
       >
         <span className={styles.logoWrap}>
           <Image
