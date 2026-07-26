@@ -24,7 +24,7 @@ export default function CollectionCard({
           href={`/collection/${collection.id}`}
           className={styles.link}
           aria-label={`View ${collection.title}`}
-          data-cursor="view"
+          data-cursor="Open"
         >
 
         <div className={styles.imageWrap}>

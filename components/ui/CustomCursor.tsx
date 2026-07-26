@@ -6,7 +6,8 @@ import styles from "./CustomCursor.module.css";
 
 export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
-  const [active, setActive] = useState(false);
+  const [label, setLabel] = useState("");
+  const [hidden, setHidden] = useState(false);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -24,37 +25,67 @@ export default function CustomCursor() {
   });
 
   useEffect(() => {
-    const moveCursor = (event: MouseEvent) => {
+    const handleMouseMove = (event: MouseEvent) => {
       x.set(event.clientX);
       y.set(event.clientY);
-      setVisible(true);
 
       const target = event.target as HTMLElement;
-      setActive(Boolean(target.closest("[data-cursor='view']")));
+      const cursorTarget = target.closest<HTMLElement>("[data-cursor]");
+
+      if (!cursorTarget) {
+        setLabel("");
+        setHidden(false);
+        setVisible(true);
+        return;
+      }
+
+      const cursorValue = cursorTarget.dataset.cursor ?? "";
+
+      if (cursorValue === "hidden") {
+        setHidden(true);
+        setVisible(false);
+        return;
+      }
+
+      setHidden(false);
+      setVisible(true);
+      setLabel(cursorValue);
     };
 
-    const hideCursor = () => setVisible(false);
+    const handleMouseLeave = () => {
+      setVisible(false);
+    };
 
-    window.addEventListener("mousemove", moveCursor);
-    document.documentElement.addEventListener("mouseleave", hideCursor);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.documentElement.addEventListener(
+      "mouseleave",
+      handleMouseLeave
+    );
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      document.documentElement.removeEventListener("mouseleave", hideCursor);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.documentElement.removeEventListener(
+        "mouseleave",
+        handleMouseLeave
+      );
     };
   }, [x, y]);
 
+  const active = label.length > 0;
+
   return (
     <motion.div
-      className={`${styles.cursor} ${active ? styles.active : ""}`}
+      className={`${styles.cursor} ${
+        active ? styles.active : ""
+      }`}
       style={{
         x: smoothX,
         y: smoothY,
-        opacity: visible ? 1 : 0,
+        opacity: visible && !hidden ? 1 : 0,
       }}
       aria-hidden="true"
     >
-      <span>{active ? "View" : ""}</span>
+      <span>{label}</span>
     </motion.div>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/seo/JsonLd";
+import CustomCursor from "@/components/ui/CustomCursor";
+import Navbar from "@/components/layout/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,6 +98,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${dmSerif.variable}`}>
         <JsonLd />
+        <CustomCursor />
+        <Navbar />
         {children}
       </body>
     </html>

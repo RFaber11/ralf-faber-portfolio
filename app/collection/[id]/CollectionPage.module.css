@@ -87,6 +87,39 @@
   letter-spacing: 0.18em;
 }
 
+.collectionNavigation {
+  display: flex;
+  width: min(1400px, calc(100% - 80px));
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: auto;
+  padding:
+    clamp(110px, 12vw, 160px)
+    0
+    clamp(34px, 5vw, 64px);
+
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.backLink span:first-child {
+  transition: transform 300ms ease;
+}
+
+.backLink:hover span:first-child {
+  transform: translateX(-6px);
+}
+
 .nextCollection {
   width: min(1400px, calc(100% - 80px));
   margin:
@@ -97,8 +130,8 @@
   border-top: 1px solid rgba(30, 30, 30, 0.14);
 }
 
-.nextCollection > p {
-  margin-bottom: clamp(44px, 7vw, 90px);
+.nextEyebrow {
+  margin-bottom: clamp(42px, 6vw, 82px);
   color: var(--muted);
   font-size: 0.68rem;
   font-weight: 600;
@@ -106,24 +139,80 @@
   text-transform: uppercase;
 }
 
-.nextCollection a {
+.nextLink {
+  display: block;
+  cursor: none;
+}
+
+.nextImageWrap {
+  position: relative;
+  min-height: clamp(520px, 62vw, 900px);
+  overflow: hidden;
+  background: #d8d5ce;
+}
+
+.nextImage {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nextOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.08) 30%,
+      rgba(0, 0, 0, 0.68) 100%
+    );
+  transition: background-color 500ms ease;
+}
+
+.nextContent {
+  position: absolute;
+  z-index: 2;
+  right: clamp(22px, 4vw, 60px);
+  bottom: clamp(24px, 4vw, 58px);
+  left: clamp(22px, 4vw, 60px);
+
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
+  gap: 40px;
+
+  color: white;
+}
+
+.nextContent h2 {
+  max-width: 1000px;
   font-family: var(--font-serif);
-  font-size: clamp(3.5rem, 8vw, 8.5rem);
-  line-height: 0.88;
+  font-size: clamp(3.3rem, 8vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.86;
   letter-spacing: -0.05em;
 }
 
-.nextCollection a span:last-child {
-  flex-shrink: 0;
-  font-family: inherit;
-  transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+.nextContent p {
+  max-width: 520px;
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
 }
 
-.nextCollection a:hover span:last-child {
+.nextArrow {
+  flex-shrink: 0;
+  padding-bottom: 8px;
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nextLink:hover .nextImage {
+  transform: scale(1.035);
+}
+
+.nextLink:hover .nextArrow {
   transform: translateX(12px);
 }
 
@@ -132,20 +221,38 @@
     gap: 90px;
   }
 
-    .nextCollection {
-    width: calc(100% - 40px);
-    margin-top: 120px;
-  }
+  .collectionNavigation {
+  width: calc(100% - 40px);
+  padding-top: 96px;
+  padding-bottom: 28px;
+}
 
-  .nextCollection > p {
-    margin-bottom: 38px;
-  }
+.nextCollection {
+  width: calc(100% - 40px);
+  margin-top: 120px;
+}
 
-  .nextCollection a {
-    align-items: center;
-    font-size: clamp(3rem, 15vw, 5rem);
-  }
+.nextEyebrow {
+  margin-bottom: 36px;
+}
 
+.nextImageWrap {
+  min-height: 118vw;
+}
+
+.nextContent {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nextContent h2 {
+  font-size: clamp(3rem, 15vw, 5rem);
+}
+
+.nextArrow {
+  align-self: flex-end;
+}
   .figure,
   .figure:first-child,
   .figure:nth-child(even),
