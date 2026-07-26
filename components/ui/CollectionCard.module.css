@@ -115,14 +115,15 @@
 
 @media (max-width: 700px) {
   .imageWrap,
-  .featured .imageWrap {
-    min-height: 145vw;
-  }
+.featured .imageWrap {
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+}
 
-  .image {
-    object-fit: cover;
-    object-position: center;
-  }
+.image {
+  object-fit: contain;
+  object-position: center;
+}
 
   .number {
     top: 16px;

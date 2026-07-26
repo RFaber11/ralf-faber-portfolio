@@ -176,10 +176,10 @@
     padding: 130px 20px 54px;
   }
 
-  .title {
-    font-size: clamp(4.6rem, 24vw, 7rem);
-    line-height: 0.79;
-  }
+.title {
+  font-size: clamp(3.4rem, 17vw, 5.2rem);
+  line-height: 0.84;
+}
 
   .title span:last-child {
     margin-left: 18px;
