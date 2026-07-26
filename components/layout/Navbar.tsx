@@ -57,9 +57,9 @@ export default function Navbar() {
       </Link>
 
       <nav className={styles.links} aria-label="Main navigation">
-        <Link href="#work">Work</Link>
-        <Link href="#about">About</Link>
-        <Link href="#contact">Contact</Link>
+        <Link href="/#work">Work</Link>
+        <Link href="/#about">About</Link>
+        <Link href="/#contact">Contact</Link>
       </nav>
     </header>
   );
