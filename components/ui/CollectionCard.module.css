@@ -117,12 +117,14 @@
   .imageWrap,
 .featured .imageWrap {
   min-height: 0;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
 }
 
 .image {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
   object-fit: contain;
-  object-position: center;
 }
 
   .number {
