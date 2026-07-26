@@ -19,8 +19,18 @@
   grid-column: 1 / -1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .grid {
-    row-gap: 110px;
+    display: block;
+  }
+
+  .grid > div,
+  .grid > div:first-child {
+    width: 100%;
+    margin: 0;
+  }
+
+  .grid > div + div {
+    margin-top: 76px;
   }
 }
