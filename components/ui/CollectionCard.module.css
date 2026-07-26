@@ -116,7 +116,12 @@
 @media (max-width: 700px) {
   .imageWrap,
   .featured .imageWrap {
-    min-height: 120vw;
+    min-height: 145vw;
+  }
+
+  .image {
+    object-fit: cover;
+    object-position: center;
   }
 
   .number {

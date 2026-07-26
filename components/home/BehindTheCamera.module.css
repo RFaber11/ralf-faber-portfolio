@@ -83,8 +83,16 @@
   transition: filter 800ms ease;
 }
 
-.imageWrap:hover .image {
-  filter: grayscale(0%);
+@media (hover: hover) and (pointer: fine) {
+  .imageWrap:hover .image {
+    filter: grayscale(0%);
+  }
+}
+
+@media (hover: none) {
+  .image {
+    filter: grayscale(100%);
+  }
 }
 
 .caption {
